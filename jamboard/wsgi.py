@@ -35,7 +35,7 @@ https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 """
 
 import os
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "posters.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "jamboard.settings")
 
 from django.core.wsgi import get_wsgi_application
 

@@ -4,7 +4,7 @@ import random
 import string
 
 def github_callback(request):
-    return HttpResponseRedirect('/admin')
+    return HttpResponseRedirect('admin')
 
 
 def github_login(request):
