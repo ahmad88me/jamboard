@@ -11,7 +11,7 @@ def github_callback(request):
 def github_login(request):
     u = 'https://github.com/login/oauth/authorize?'
     u += "client_id="+os.environ['jamboard_client_id']
-    #u += "&redirect_uri=jamboard/get_access"
+    u += "&redirect_uri=http://54.88.191.135/jamboard/admin"
     sec = ''.join([random.choice(string.ascii_letters+string.digits) for _ in range(9)])
     request.session['state'] = sec
     u += "&state="+sec
