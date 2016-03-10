@@ -9,9 +9,9 @@ import requests
 
 
 def github_callback(request):
-    users = User.objects.all()
-    return render(request, 'home.html', {'users': users})
-    # return HttpResponse("<h2>Hello</h2>")
+    # users = User.objects.all()
+    # return render(request, 'home.html', {'users': users})
+    return HttpResponse("<h2>Hello</h2>")
     # return HttpResponseRedirect('admin')
 
 
@@ -47,5 +47,7 @@ def github_get_access(request):
 
 
 def home(request):
+    users = User.objects.all()
+    return render(request, 'home.html', {'users': users})
 
 
