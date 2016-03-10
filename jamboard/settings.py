@@ -53,7 +53,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'jamboard.urls'
 
-print "dir: "+os.path.join(BASE_DIR, 'jamboard')
+print "\n\n\ndir: "+os.path.join(BASE_DIR, 'jamboard')
 
 TEMPLATES = [
     {
