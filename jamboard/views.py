@@ -1,11 +1,14 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 import os
 import random
 import string
 import requests
 
+
+
 def github_callback(request):
-    return HttpResponseRedirect('admin')
+    return HttpResponse("<h2>Hello</h2>")
+    #return HttpResponseRedirect('admin')
 
 
 def github_login(request):
