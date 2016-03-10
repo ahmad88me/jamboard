@@ -1,14 +1,18 @@
 from django.http import HttpResponseRedirect, HttpResponse
+from django.shortcuts import render
+from django.contrib.auth.models import User
+from jamboard.models import *
 import os
 import random
 import string
 import requests
 
 
-
 def github_callback(request):
-    return HttpResponse("<h2>Hello</h2>")
-    #return HttpResponseRedirect('admin')
+    users = User.objects.all()
+    return render(request, 'home.html', {'users': users})
+    # return HttpResponse("<h2>Hello</h2>")
+    # return HttpResponseRedirect('admin')
 
 
 def github_login(request):
@@ -40,3 +44,8 @@ def github_get_access(request):
     print "response is: "+str(d)
 
     return HttpResponseRedirect('admin')
+
+
+def home(request):
+
+
