@@ -35,7 +35,7 @@ def github_get_access(request):
         'client_id': client_id,
         'client_secret': client_secret,
         'code': request.GET['code'],
-        'redirect_uri': 'jamboard/home'#'jamboard/get_access'#'jamboard/callback'
+        'redirect_uri': 'http://54.88.191.135/jamboard/home'#'jamboard/get_access'#'jamboard/callback'
     }
     res = requests.post('https://github.com/login/oauth/access_token', data=data)
     atts = res.text.split('&')
