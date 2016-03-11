@@ -79,8 +79,14 @@ WSGI_APPLICATION = 'jamboard.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'jamboard',
+        'USERNAME': os.environ['jam_db_user'],
+        'PASSWORD': os.environ['jam_db_password'],
+        #'HOST': '54.88.191.135',
+        #'PORT': '3306',
     }
 }
 

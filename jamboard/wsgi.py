@@ -45,7 +45,7 @@ from django.core.wsgi import get_wsgi_application
 #The below code is to pass environment variables from apache
 _application = get_wsgi_application()
 
-env_variables_to_pass = ['jamboard_client_id', 'jamboard_client_secret']
+env_variables_to_pass = ['jamboard_client_id', 'jamboard_client_secret', 'jam_db_user', 'jam_db_password']
 
 
 def application(environ, start_response):

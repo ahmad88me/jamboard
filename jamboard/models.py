@@ -2,12 +2,42 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-round_choices = ((0,'round0'), (1,'round1'), (2,'round2'), (3,'round3'))
+round_choices = (('round0', 'round0'), ('round1', 'round1'), ('round2', 'round2'), ('round3', 'round3'))
 
 
 class Problem(models.Model):
     title = models.CharField(max_length=128)
     round = models.CharField(max_length=10, choices=round_choices)
+    url = models.URLField()
+
+
+class Solve(models.Model):
+    problem = models.ForeignKey(Problem)
     user = models.ForeignKey(User)
+
+    def save(self, *args, **kwargs):
+        super(Solve, self).save(*args, **kwargs)
+        sv = SolveVector.objects.filter(user=self.user)
+        if sv.count() == 0:
+            sv = SolveVector.objects.create(user=self.user)
+        elif sv.count() == 1:
+            sv = sv[0]
+        if self.problem.round == round_choices[0][0]:
+            sv.round0 += 1
+        elif self.problem.round == round_choices[1][0]:
+            sv.round1 += 1
+        elif self.problem.round == round_choices[2][0]:
+            sv.round2 += 1
+        elif self.problem.round == round_choices[3][0]:
+            sv.round3 += 1
+
+
+class SolveVector(models.Model):
+    user = models.OneToOneField(User)
+    round0 = models.IntegerField(default=0)
+    round1 = models.IntegerField(default=0)
+    round2 = models.IntegerField(default=0)
+    round3 = models.IntegerField(default=0)
+
 
 
