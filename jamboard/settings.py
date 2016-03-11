@@ -83,7 +83,7 @@ DATABASES = {
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'jamboard',
-        'USERNAME': os.environ['jam_db_user'],
+        'USER': os.environ['jam_db_user'],
         'PASSWORD': os.environ['jam_db_password'],
         #'HOST': '54.88.191.135',
         #'PORT': '3306',
