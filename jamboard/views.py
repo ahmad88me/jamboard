@@ -50,7 +50,7 @@ def github_get_access(request):
     user = g.get_user()
     users = User.objects.filter(id=user.id)
     if len(users)==0:
-        u = User.objects.create_user(username=g.login, password="testing23904809384slkjfdaslf", first_name=user.name,
+        u = User.objects.create_user(username=user.login, password="testing23904809384slkjfdaslf", first_name=user.name,
                                         id=user.id, last_name=user.avatar_url)
         u.save()
     return home(request)
