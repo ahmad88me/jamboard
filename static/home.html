@@ -5,14 +5,14 @@
   <div class="col-sm-offset-2 col-md-8">
         <table class="table table-striped table-bordered">
             <tr>
-                <td >#1</td>
+                <td style="width: 70px">#1</td>
                 <td style="width: 70px">Logo</td>
                 <td >User</td>
 
             </tr>
             {%for u in users %}
                 <tr>
-                    <td >{{forloop.counter}}</td>
+                    <td style="width: 70px">{{forloop.counter}}</td>
                     <td><img src="{{u.last_name}}" width="60px" height="60px"/></td>
                     <td >{{u.username}}</td>
 
