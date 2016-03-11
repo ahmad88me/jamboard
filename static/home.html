@@ -6,14 +6,16 @@
         <table class="table table-striped table-bordered">
             <tr>
                 <td >#1</td>
-                <td >Email</td>
                 <td>Logo</td>
+                <td >User</td>
+
             </tr>
             {%for u in users %}
                 <tr>
                     <td >{{forloop.counter}}</td>
-                    <td >{{u.username}}</td>
                     <td><img src="{{u.last_name}}" width="60px" height="60px"/></td>
+                    <td >{{u.username}}</td>
+
                 </tr>
             {% endfor %}
         </table>
