@@ -68,7 +68,7 @@ def home(request):
         for i in round_choices:
             problems = Problem.objects.filter(user=u, round=i[0])
             pvec.append(len(problems))
-        users_problems.append({'user': u, 'pvec': pvec})
+        users_problems.append({'user': u, 'round0': pvec[0], 'round1': pvec[1], 'round2': pvec[2], 'round3': pvec[3]})
     return render(request, 'home.html', {'users_problems': users_problems, 'username': request.session['username'],
                                          'avatar': request.session['avatar']})
 
