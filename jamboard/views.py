@@ -56,7 +56,7 @@ def github_get_access(request):
                                         id=user.id, last_name=user.avatar_url)
         u.save()
     #return home(request)
-    return HttpResponseRedirect('/jarboard')
+    return HttpResponseRedirect('/jamboard')
 
 
 def home(request):
