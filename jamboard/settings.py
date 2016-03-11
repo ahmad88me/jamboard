@@ -58,7 +58,7 @@ print "\n\n\ndir: "+os.path.join(BASE_DIR, 'jamboard')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'jamboard')],
+        'DIRS': [os.path.join(BASE_DIR, 'static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
