@@ -55,8 +55,8 @@ def github_get_access(request):
         u = User.objects.create_user(username=user.login, password="testing23904809384slkjfdaslf", first_name=user.name,
                                         id=user.id, last_name=user.avatar_url)
         u.save()
-    return home(request)
-    #return HttpResponseRedirect('admin')
+    #return home(request)
+    return HttpResponseRedirect('/home')
 
 
 def home(request):
