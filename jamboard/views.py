@@ -49,6 +49,8 @@ def github_get_access(request):
     g = Github(access_token)
     user = g.get_user()
     users = User.objects.filter(id=user.id)
+    request.session['avatar'] = user.avatar_url
+    request.session['username'] = user.login
     if len(users)==0:
         u = User.objects.create_user(username=user.login, password="testing23904809384slkjfdaslf", first_name=user.name,
                                         id=user.id, last_name=user.avatar_url)
@@ -59,6 +61,7 @@ def github_get_access(request):
 
 def home(request):
     users = User.objects.all()
-    return render(request, 'home.html', {'users': users})
+    return render(request, 'home.html', {'users': users, 'username': request.session['username'],
+                                         'avatar': request.session['avatar']})
 
 

@@ -13,8 +13,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <title></title>
+    <style>
+         body {
+        margin: 0;
+        background: url("http://www.nubimagazine.com/wp-content/uploads/2016/01/google-thumb.jpg") no-repeat;
+        //background: url("https://lh3.googleusercontent.com/-tTMO_eTlylU/AAAAAAAAAAI/AAAAAAAAAAQ/aEdtKEM24eA/s265-c-k-no/photo.jpg") repeat;
+        //background-size: 50px 50px;
+        }
+    </style>
 </head>
 <body>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form col-md-3 col-md-offset-8" style="background-color: #cccccc;">
+            <img src="{{avatar}}" class="img-circle"/> {{username}}
+        </div>
+    </div>
+</div>
 {% block body %}{% endblock %}
 </body>
 </html>
