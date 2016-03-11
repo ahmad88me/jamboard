@@ -35,7 +35,7 @@ def github_get_access(request):
         'client_id': client_id,
         'client_secret': client_secret,
         'code': request.GET['code'],
-        'redirect_uri': 'jamboard/get_access'#'jamboard/callback'
+        'redirect_uri': 'jamboard/callback'#'jamboard/get_access'#'jamboard/callback'
     }
     res = requests.post('https://github.com/login/oauth/access_token', data=data)
     atts = res.text.split('&')
@@ -43,10 +43,10 @@ def github_get_access(request):
     for att in atts:
         keyv = att.split('=')
         d[keyv[0]] = keyv[1]
+    print "response is: "+str(d)
     access_token = d['access_token']
     request.session['access_token'] = access_token
     g = Github(access_token)
-    print "response is: "+str(d)
     user = g.get_user()
     users = User.objects.filter(id=user.id)
     if len(users)==0:
