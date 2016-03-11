@@ -61,7 +61,15 @@ def github_get_access(request):
 
 def home(request):
     users = User.objects.all()
-    return render(request, 'home.html', {'users': users, 'username': request.session['username'],
+    user_problems = []
+
+    for u in users:
+        pvec = []
+        for i in round_choices:
+            problems = Problem.objects.filter(user=u, round=i[0])
+            pvec.append(len(problems))
+        user_problems.append((u, pvec))
+    return render(request, 'home.html', {'users_problems': user_problems, 'username': request.session['username'],
                                          'avatar': request.session['avatar']})
 
 

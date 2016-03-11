@@ -13,11 +13,11 @@
                 <td> Round2</td>
                 <td> Round3</td>
             </tr>
-            {%for u in users %}
+            {%for u in user_problems %}
                 <tr>
                     <td style="width: 70px">{{forloop.counter}}</td>
-                    <td><img src="{{u.last_name}}" width="60px" height="60px"/></td>
-                    <td >{{u.username}}</td>
+                    <td><img src="{{u[0].last_name}}" width="60px" height="60px"/></td>
+                    <td >{{u[0].username}}</td>
                     <td></td>
                     <td></td>
                     <td></td>
