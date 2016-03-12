@@ -55,22 +55,41 @@ def github_get_access(request):
         u = User.objects.create_user(username=user.login, password="testing23904809384slkjfdaslf", first_name=user.name,
                                         id=user.id, last_name=user.avatar_url)
         u.save()
+        sv = SolveVector.objects.create(user=u)
+        sv.save()
     #return home(request)
     return HttpResponseRedirect('/jamboard')
 
 
 def home(request):
-    users = User.objects.all()
-    users_problems = []
-
-    for u in users:
-        pvec = []
-        for i in round_choices:
-            problems = Problem.objects.filter(user=u, round=i[0])
-            pvec.append(len(problems))
-        print "\n\npvec 0:"+str(pvec[0])
-        users_problems.append({'user': u, 'round0': pvec[0], 'round1': pvec[1], 'round2': pvec[2], 'round3': pvec[3]})
-    return render(request, 'home.html', {'users_problems': users_problems, 'username': request.session['username'],
+    fake_session(request)
+    return render(request, 'home.html', {'solvevectors': SolveVector.objects.all(), 'username': request.session['username'],
                                          'avatar': request.session['avatar']})
 
 
+def add_problem(request):
+    fake_session(request)
+    if request.method == 'GET':
+        rounds = get_rounds()
+        return render(request, 'add_problem.html',
+                      {'username': request.session['username'],
+                        'avatar': request.session['avatar'],
+                        'rounds': rounds
+                       })
+    else:
+        title = request.POST['title']
+        url = request.POST['url']
+        round = request.POST['round']
+        problem = Problem.objects.create(title=title, url=url, round=round)
+    return HttpResponseRedirect('/')
+
+
+def fake_session(request):
+    if 'username' not in request.session:
+        request.session['username'] = 'test user'
+    if 'avatar' not in request.session:
+        request.session['avatar'] = 'https://octodex.github.com/images/original.png'
+
+
+def get_rounds():
+    return [{'roundkey': r[0], 'roundvalue': r[1]} for r in round_choices ]

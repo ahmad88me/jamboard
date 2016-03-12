@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+
+<form method="POST">{% csrf_token %}
+    <input type="text" name="title" class="form-control" placeholder="Problem Title"/>
+    <select class="form-control" name="round">
+        {%for r in rounds%}
+            <option value="{{r.roundkey}}">{{r.roundvalue}}</option>
+        {% endfor %}
+    </select>
+    <input type="url" name="url" class="form-control" placeholder="Problem URL"/>
+    <input type="submit" class="form-control" text="Add" value="Add"/>
+</form>
+
+{% endblock %}
+

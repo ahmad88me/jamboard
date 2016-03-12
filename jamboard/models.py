@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-round_choices = (('round0', 'round0'), ('round1', 'round1'), ('round2', 'round2'), ('round3', 'round3'))
+round_choices = (('round0', 'Qualification Round'), ('round1', 'Round 1'), ('round2', 'Round 2'), ('round3', 'Round 3'))
 
 
 class Problem(models.Model):
