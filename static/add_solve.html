@@ -2,7 +2,7 @@
 {% block body %}
 
 <div class="col-md-8 col-md-offset-2">
-<form method="POST" action="../jamboard/add_solve">{% csrf_token %}
+<form method="POST" action="/jamboard/add_solve">{% csrf_token %}
     <div class="form-group">
         <select class="form-control" name="problem">
             {%for p in problems%}
