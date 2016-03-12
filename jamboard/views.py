@@ -113,7 +113,7 @@ def logout(request):
 
 def fake_session(request):
     if 'username' not in request.session:
-        request.session['username'] = 'test user'
+        request.session['username'] = 'Login'
     if 'avatar' not in request.session:
         request.session['avatar'] = 'https://octodex.github.com/images/original.png'
 
