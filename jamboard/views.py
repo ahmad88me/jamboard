@@ -82,7 +82,7 @@ def add_problem(request):
         url = request.POST['url']
         round = request.POST['round']
         problem = Problem.objects.create(title=title, url=url, round=round)
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/jamboard')
 
 
 @login_required
@@ -102,13 +102,13 @@ def add_solve(request):
             problem = problems[0]
             s = Solve.objects.create(user=request.user, problem=problem)
             s.save()
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/jamboard')
 
 
 def logout(request):
     fake_session(request)
     auth.logout()
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/jamboard')
 
 
 def fake_session(request):

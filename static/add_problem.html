@@ -2,15 +2,22 @@
 {% block body %}
 
 <div class="col-md-8 col-md-offset-2">
-<form method="POST"  action="add_problem">{% csrf_token %}
+<form method="POST" >{% csrf_token %}
+    <div class="form-group">
         <input type="text" name="title" class="form-control" placeholder="Problem Title"/>
+    </div>
+    <div class="form-group">
         <select class="form-control" name="round">
             {%for r in rounds%}
                 <option value="{{r.roundkey}}">{{r.roundvalue}}</option>
             {% endfor %}
         </select>
+    </div>
+    <div class="form-group">
         <input type="url" name="url" class="form-control" placeholder="Problem URL"/>
+    </div>
         <input type="submit" class="form-control" text="Add" value="Add"/>
+    </div>
 </form>
 </div>
 {% endblock %}
