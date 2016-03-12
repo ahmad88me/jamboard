@@ -1,6 +1,8 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+import django.contrib.auth as auth
 
 from jamboard.models import *
 from github import Github
@@ -10,12 +12,6 @@ import random
 import string
 import requests
 
-
-def github_callback(request):
-    # users = User.objects.all()
-    # return render(request, 'home.html', {'users': users})
-    return HttpResponse("<h2>Hello</h2>")
-    # return HttpResponseRedirect('admin')
 
 
 def github_login(request):
@@ -57,7 +53,10 @@ def github_get_access(request):
         u.save()
         sv = SolveVector.objects.create(user=u, avatar=user.avatar_url)
         sv.save()
+    else:
+        u = users[0]
     #return home(request)
+    auth.login(request, u)
     return HttpResponseRedirect('/jamboard')
 
 
@@ -67,6 +66,7 @@ def home(request):
                             'username': request.session['username'], 'avatar': request.session['avatar']})
 
 
+@login_required()
 def add_problem(request):
     fake_session(request)
     if request.method == 'GET':
@@ -84,8 +84,29 @@ def add_problem(request):
     return HttpResponseRedirect('/')
 
 
+@login_required
+def add_solve(request):
+    fake_session(request)
+    if request.method == 'GET':
+        problems = Problem.objects.all()
+        return render(request, 'add_solve.html',
+                      {'username': request.session['username'],
+                        'avatar': request.session['avatar'],
+                        'problems': problems
+                       })
+    else:
+        problem = request.POST['problem']
+        problems = Problem.objects.filter(id=problem)
+        if problems.count() ==1:
+            problem = problems[0]
+            s = Solve.objects.create(user=request.user, problem=problem)
+            s.save()
+    return HttpResponseRedirect('/')
+
+
 def logout(request):
     fake_session(request)
+    auth.logout()
     return HttpResponseRedirect('/')
 
 
