@@ -21,21 +21,21 @@ class Solve(models.Model):
     def __str__(self):
         return self.problem.title + " - " + self.user.username
 
-    def save(self, *args, **kwargs):
-        super(Solve, self).save(*args, **kwargs)
-        sv = SolveVector.objects.filter(user=self.user)
-        if sv.count() == 0:
-            sv = SolveVector.objects.create(user=self.user)
-        elif sv.count() == 1:
-            sv = sv[0]
-        if self.problem.round == round_choices[0][0]:
-            sv.round0 += 1
-        elif self.problem.round == round_choices[1][0]:
-            sv.round1 += 1
-        elif self.problem.round == round_choices[2][0]:
-            sv.round2 += 1
-        elif self.problem.round == round_choices[3][0]:
-            sv.round3 += 1
+    # def save(self, *args, **kwargs):
+    #     super(Solve, self).save(*args, **kwargs)
+    #     sv = SolveVector.objects.filter(user=self.user)
+    #     if sv.count() == 0:
+    #         sv = SolveVector.objects.create(user=self.user)
+    #     elif sv.count() == 1:
+    #         sv = sv[0]
+    #     if self.problem.round == round_choices[0][0]:
+    #         sv.round0 += 1
+    #     elif self.problem.round == round_choices[1][0]:
+    #         sv.round1 += 1
+    #     elif self.problem.round == round_choices[2][0]:
+    #         sv.round2 += 1
+    #     elif self.problem.round == round_choices[3][0]:
+    #         sv.round3 += 1
 
 
 class SolveVector(models.Model):

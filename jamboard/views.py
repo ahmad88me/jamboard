@@ -102,6 +102,20 @@ def add_solve(request):
             problem = problems[0]
             s = Solve.objects.create(user=request.user, problem=problem)
             s.save()
+            sv = SolveVector.objects.filter(user=request.user)
+            if sv.count() == 0:
+                sv = SolveVector.objects.create(user=request.user)
+            elif sv.count() == 1:
+                sv = sv[0]
+            if problem.round == round_choices[0][0]:
+                sv.round0 += 1
+            elif problem.round == round_choices[1][0]:
+                sv.round1 += 1
+            elif problem.round == round_choices[2][0]:
+                sv.round2 += 1
+            elif problem.round == round_choices[3][0]:
+                sv.round3 += 1
+            sv.save()
     return HttpResponseRedirect('/jamboard')
 
 
