@@ -63,8 +63,8 @@ def github_get_access(request):
 
 def home(request):
     fake_session(request)
-    return render(request, 'home.html', {'solvevectors': SolveVector.objects.all(), 'username': request.session['username'],
-                                         'avatar': request.session['avatar']})
+    return render(request, 'home.html', {'solvevectors': SolveVector.objects.all(),
+                            'username': request.session['username'], 'avatar': request.session['avatar']})
 
 
 def add_problem(request):
