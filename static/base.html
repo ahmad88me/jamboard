@@ -27,9 +27,9 @@
     <div class="col-md-12">
         <div class="form col-md-2 col-md-offset-10" style="font-weight: bold; color: white; font: Arial, Helvetica, sans-serif;">
             {% if username == "test user" %}
-            <img src="{{avatar}}" class="img-circle" width="50px"/> {{username}}
-            {% else%}
             <a href="login"><img src="{{avatar}}" class="img-circle" width="50px"/> {{username}}</a>
+            {% else%}
+             <img src="{{avatar}}" class="img-circle" width="50px"/> {{username}}
             {% endif %}
         </div>
     </div>
