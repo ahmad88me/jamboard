@@ -34,6 +34,7 @@ class Solve(models.Model):
 
 class SolveVector(models.Model):
     user = models.OneToOneField(User)
+    avatar = models.CharField(max_length=255, default='')
     round0 = models.IntegerField(default=0)
     round1 = models.IntegerField(default=0)
     round2 = models.IntegerField(default=0)

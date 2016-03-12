@@ -52,10 +52,10 @@ def github_get_access(request):
     request.session['avatar'] = user.avatar_url
     request.session['username'] = user.login
     if len(users)==0:
-        u = User.objects.create_user(username=user.login, password="testing23904809384slkjfdaslf", first_name=user.name,
-                                        id=user.id, last_name=user.avatar_url)
+        u = User.objects.create_user(username=user.login, password="test", first_name=user.name,
+                                        id=user.id)
         u.save()
-        sv = SolveVector.objects.create(user=u)
+        sv = SolveVector.objects.create(user=u, avatar=user.avatar_url)
         sv.save()
     #return home(request)
     return HttpResponseRedirect('/jamboard')
