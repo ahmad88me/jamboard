@@ -56,6 +56,7 @@ def github_get_access(request):
     else:
         u = users[0]
     #return home(request)
+    u.backend = 'django.contrib.auth.backends.ModelBackend'
     auth.login(request, u)
     return HttpResponseRedirect('/jamboard')
 
