@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block body %}
 
+<div class="col-md-8 col-md-offset-4">
 <form method="POST">{% csrf_token %}
     <input type="text" name="title" class="form-control" placeholder="Problem Title"/>
     <select class="form-control" name="round">
@@ -11,6 +12,6 @@
     <input type="url" name="url" class="form-control" placeholder="Problem URL"/>
     <input type="submit" class="form-control" text="Add" value="Add"/>
 </form>
-
+</div>
 {% endblock %}
 
