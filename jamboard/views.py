@@ -84,6 +84,11 @@ def add_problem(request):
     return HttpResponseRedirect('/')
 
 
+def logout(request):
+    fake_session(request)
+    return HttpResponseRedirect('/')
+
+
 def fake_session(request):
     if 'username' not in request.session:
         request.session['username'] = 'test user'

@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^get_access', views.github_get_access),
     url(r'^login', views.github_login),
     url(r'^callback', views.github_callback),
+    url(r'logout', views.logout),
     #url(r'^admin', include(admin.site.urls)),
     url(r'', views.home),
 ]
