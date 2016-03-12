@@ -6,6 +6,7 @@ urlpatterns = [
     # Examples:
     # url(r'^$', 'jamboard.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
+    url(r'^add_solve', views.add_solve),
     url(r'^add_problem', views.add_problem),
     url(r'^home', views.home),
     url(r'^get_access', views.github_get_access),
