@@ -21,6 +21,9 @@ class Solve(models.Model):
     def __str__(self):
         return self.problem.title + " - " + self.user.username
 
+    class Meta:
+        unique_together = (("problem", "user"),)
+
     # def save(self, *args, **kwargs):
     #     super(Solve, self).save(*args, **kwargs)
     #     sv = SolveVector.objects.filter(user=self.user)
@@ -48,5 +51,3 @@ class SolveVector(models.Model):
 
     def __str__(self):
         return "%s %d %d %d %d"%(self.user.username, self.round0, self.round1, self.round2, self.round3)
-
-
