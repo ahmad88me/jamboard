@@ -10,10 +10,16 @@ class Problem(models.Model):
     round = models.CharField(max_length=10, choices=round_choices)
     url = models.URLField()
 
+    def __str__(self):
+        return self.title
+
 
 class Solve(models.Model):
     problem = models.ForeignKey(Problem)
     user = models.ForeignKey(User)
+
+    def __str__(self):
+        return self.problem.title + " - " + self.user.username
 
     def save(self, *args, **kwargs):
         super(Solve, self).save(*args, **kwargs)
@@ -40,5 +46,7 @@ class SolveVector(models.Model):
     round2 = models.IntegerField(default=0)
     round3 = models.IntegerField(default=0)
 
+    def __str__(self):
+        return "%s %d %d %d %d"%(self.user.username, self.round0, self.round1, self.round2, self.round3)
 
 
