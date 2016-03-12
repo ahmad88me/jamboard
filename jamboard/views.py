@@ -107,7 +107,7 @@ def add_solve(request):
 
 def logout(request):
     fake_session(request)
-    auth.logout()
+    auth.logout(request)
     return HttpResponseRedirect('/jamboard')
 
 
