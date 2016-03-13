@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 
 round_choices = (('round0', 'Qualification Round'), ('round1', 'Round 1'), ('round2', 'Round 2'), ('round3', 'Round 3'))
+# round_dict = {}
+# for r in round_choices:
+#     round_dict[r[0]] = r[1]
 
 
 class Problem(models.Model):

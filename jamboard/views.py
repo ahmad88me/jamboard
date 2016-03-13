@@ -63,7 +63,7 @@ def github_get_access(request):
 
 def home(request):
     fake_session(request)
-    return render(request, 'home.html', {'solvevectors': SolveVector.objects.all(),
+    return render(request, 'home.html', {'solvevectors': SolveVector.objects.all(), 'problems': Problem.objects.all(),
                             'username': request.session['username'], 'avatar': request.session['avatar']})
 
 
