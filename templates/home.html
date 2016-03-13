@@ -33,7 +33,7 @@
             </tr>
             {% for p in problems%}
                 <tr>
-                    <td>{{p.title}}</td>
+                    <td><a href="{{p.url}}">{{p.title}}</a></td>
                     <td>{{p.get_round_display}}</td>
                 </tr>
             {% endfor %}
